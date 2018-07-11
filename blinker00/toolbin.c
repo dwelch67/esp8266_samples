@@ -39,13 +39,13 @@ int main ( int argc, char *argv[] )
     }
     ra=0xE9;
     fwrite(&ra,1,1,fp);
-    ra=3;
+    ra=1;
     fwrite(&ra,1,1,fp);
     ra=0;
     fwrite(&ra,1,1,fp);
     ra=0;
     fwrite(&ra,1,1,fp);
-    ra=0x40100100;
+    ra=0x40100000;
     fwrite(&ra,1,4,fp);
 
     ra=0x40100000;
@@ -54,32 +54,13 @@ int main ( int argc, char *argv[] )
     fwrite(&ra,1,4,fp);
     fwrite(data,1,rb,fp);
 
-    ra=0x3FFE8000;
-    fwrite(&ra,1,4,fp);
-    ra=4;
-    fwrite(&ra,1,4,fp);
-    ra=0x00000001;
-    fwrite(&ra,1,4,fp);
-
-    ra=0x3FFE8004;
-    fwrite(&ra,1,4,fp);
-    ra=16;
-    fwrite(&ra,1,4,fp);
-    ra=0x00000000;
-    fwrite(&ra,1,4,fp);
-    fwrite(&ra,1,4,fp);
-    fwrite(&ra,1,4,fp);
-    fwrite(&ra,1,4,fp);
-
     ra=0;
     for(;(rb&0xF)!=0xF;rb++)
     {
         fwrite(&ra,1,1,fp);
     }
     sum=0xEF;
-    sum^=0x01;
     for(ra=0;ra<rb;ra++) sum^=data[ra];
-printf("0x%02X\n",sum);
     fwrite(&sum,1,1,fp);
     fclose(fp);
     printf("Done.\n");

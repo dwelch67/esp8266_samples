@@ -1,0 +1,23 @@
+
+See top level directory for more information on this part.
+
+This is a simple led blinker.  Most boards have an led on GPIO2.
+
+I dont yet know what the IO MUX bit definitions are this is just
+how the SDK and others do it, it would be nice to know.
+
+Plenty of rules for this instruction set, and clearly there is a
+bootloader that comes before us and does a lot of setup, making
+this a bit easier.  We dont need to setup the stack.  The pc
+relative addressing appears to want to address to lower valued
+addresses with some alignment rules so I have set the bootstrap
+and linker so that can happen.
+
+Notice how much simpler my linker script is than the SDK.
+Because I dont use the linker script you cant use esptool.py to
+get from elf to image.  That file format is pretty simple so have
+a tool for that too.
+
+I am not using the SDK but am using the toolchain built from
+the same makefiles/repo.
+

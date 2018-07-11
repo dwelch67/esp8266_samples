@@ -1,0 +1,4 @@
+
+This is a collection of bare metal programming examples for the
+esp8266 part.  These examples do not use the SDK nor do they
+use the linker script from the SDK toolchain.
